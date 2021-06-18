@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CovidAssam</string>
+    <string name="date">Date</string>
+    <string name="total_today">Today\'s Total</string>
+    <string name="total_cases">Total Cases</string>
+    <string name="total_active">Total Active</string>
+    <string name="total_recovered">Total Recovered</string>
+    <string name="total_deceased">Total Deceased</string>
+    <string name="total_tested">Total Tested</string>
+    <string name="not_updated_yet">Not Updated Yet</string>
 </resources>

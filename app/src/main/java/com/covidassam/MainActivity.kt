@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var selectedTotalTested: TextView
     lateinit var selectedOther: String
 
+    private val selectedStateName: TextView
+    get() = findViewById(R.id.stateName)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,7 +53,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         selectedTotalRecovered = findViewById(R.id.stateTotalRecoveredCount)
         selectedTotalDeceased = findViewById(R.id.stateTotalDeceasedCount)
         selectedTotalTested = findViewById(R.id.stateTotalTestedCount)
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val today = LocalDateTime.now()
@@ -78,6 +80,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val selectedState: String = parent?.getItemAtPosition(position).toString()
         Log.d(LOG_TAG, "onItemSelected: $selectedState")
+        selectedStateName.text = selectedState
 
         when(selectedState){
             "Andaman and Nicobar Islands" -> selectedStateAbb = "AN"
@@ -155,7 +158,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //                        }
 //                    }
                 } else {
-                    currentTally.text = "Not Updated Yet"
+                    currentTally.text = getString(R.string.not_updated_yet)
                 }
 
 //                val other:  String
@@ -197,7 +200,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 selectedTotalTested.text = stateTested.toString()
 
             }catch (e: JSONException){
-                currentTally.text = "Not Updated Yet"
+                currentTally.text = getString(R.string.not_updated_yet)
                 e.printStackTrace()
             }
         },{ error ->
